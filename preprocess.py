@@ -7,7 +7,8 @@ from pprint import pprint
 jsonlist = glob("stock_history/*")
 jsonlist.sort()
 
-stock_codes = ['3481','2408','2454','3231','3008','2330','2451','2388','2379','2890']
+stock_codes = ['3481', '2408', '2454', '3231', '3008', '2330', '2451', '2388', '2379', '2890']
+normal =      [10,     100,    480,     30,    5000,   250,    110,    50,     130,    13]
 stocks = np.zeros((10, 1000, 5))
 
 for j, jsonname in enumerate(jsonlist[-1000:]) :
@@ -27,6 +28,6 @@ for i in range(9810):
         for k in range(5):
             st_code = i // 981
             day = (i % 981) + j
-            data[i][j][k] = stocks[st_code][day][k]
+            data[i][j][k] = stocks[st_code][day][k] / normal[st_code]
 
 np.save('stock_data.npy', data)
