@@ -1,2 +1,4 @@
 *.npy
 .env/*
+model/*
+logs/*
